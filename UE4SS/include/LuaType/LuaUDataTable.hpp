@@ -17,15 +17,14 @@ namespace RC::LuaType
         }
     };
 
-    class UDataTable : public RemoteObjectBase<Unreal::UDataTable, UDataTableName>
+    class UDataTable : public UObjectBase<Unreal::UDataTable, UDataTableName>
     {
     private:
-        explicit UDataTable(const PusherParams&);
+        explicit UDataTable(Unreal::UDataTable* object);
 
     public:
         UDataTable() = delete;
 
-        auto static construct(const PusherParams&) -> const LuaMadeSimple::Lua::Table;
         auto static construct(const LuaMadeSimple::Lua&, BaseObject&) -> const LuaMadeSimple::Lua::Table;
         auto static construct(const LuaMadeSimple::Lua& lua, Unreal::UDataTable* unreal_object) -> const LuaMadeSimple::Lua::Table;
 
